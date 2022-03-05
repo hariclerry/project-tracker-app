@@ -1,14 +1,21 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Settings from './components/settings';
 import { makeStyles } from '@mui/styles';
 import useSettings from './hooks/useSettings';
+import Tracker from 'pages/Tracker';
 
 const useStyles = makeStyles(() => ({
   root: (props) => (
     {
       backgroundColor: props.backgroundColor,
       color: props.color,
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: 'calc(10px + 2vmin)',
     }),
 }))
 
@@ -23,15 +30,8 @@ function App() {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
+      <Tracker />
       <Settings />
-      <div className={classes.root}>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
-      </div>
     </div>
   );
 }
