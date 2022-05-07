@@ -1,12 +1,13 @@
 import { trim } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 import { format, isSameDay, isSameMonth } from 'date-fns';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Icon } from '@iconify/react';
 import peopleFill from '@iconify/icons-eva/people-fill';
 import calendarFill from '@iconify/icons-eva/calendar-fill';
 import radioButtonOffOutline from '@iconify/icons-eva/radio-button-off-outline';
 import checkmarkCircle2Outline from '@iconify/icons-eva/checkmark-circle-2-outline';
+import attach2Fill from '@iconify/icons-eva/attach-2-fill';
 // material
 import {
   Box,
@@ -20,6 +21,8 @@ import {
 import { MobileDateRangePicker } from '@mui/lab';
 //
 import { MIconButton } from 'components/@material-extend';
+
+import TrackerTaskAttachments from './TrackerTaskAttachments';
 
 const defaultTask = {
   attachments: [],
@@ -94,9 +97,11 @@ export function DisplayTime({
   );
 }
 
-export default function TrackerTaskAdd({ onAddTask, onCloseAddTask }) {
+export default function TrackerTaskAdd({ onAddTask, onCloseAddTask, onHandleChange, defaultAttachmentImage }) {
+  const fileInputRef = useRef(null);
   const [name, setName] = useState('');
   const [completed, setCompleted] = useState(false);
+
   const {
     dueDate,
     startTime,
@@ -106,7 +111,7 @@ export default function TrackerTaskAdd({ onAddTask, onCloseAddTask }) {
     onChangeDueDate,
     openPicker,
     onOpenPicker,
-    onClosePicker
+    onClosePicker,
   } = useDatePicker({
     date: [null, null]
   });
@@ -114,20 +119,30 @@ export default function TrackerTaskAdd({ onAddTask, onCloseAddTask }) {
   const handleKeyUpAddTask = (event) => {
     if (event.key === 'Enter') {
       if (trim(name) !== '') {
-        onAddTask({ ...defaultTask, id: uuidv4(), name, due: dueDate, completed });
+        onAddTask({
+          ...defaultTask, id: uuidv4(), name, due: dueDate, completed,
+          attachments: [...defaultTask.attachments, defaultAttachmentImage],
+        });
       }
     }
   };
 
   const handleClickAddTask = () => {
     if (name) {
-      onAddTask({ ...defaultTask, id: uuidv4(), name, due: dueDate, completed });
+      onAddTask({
+        ...defaultTask, id: uuidv4(), name, due: dueDate, completed,
+        attachments: [...defaultTask.attachments, defaultAttachmentImage]
+      });
     }
     onCloseAddTask();
   };
 
   const handleChangeCompleted = (event) => {
     setCompleted(event.target.checked);
+  };
+
+  const handleAttach = () => {
+    fileInputRef.current?.click();
   };
 
   return (
@@ -157,14 +172,21 @@ export default function TrackerTaskAdd({ onAddTask, onCloseAddTask }) {
                 checkedIcon={<Icon icon={checkmarkCircle2Outline} />}
               />
             </Tooltip>
-
+            {defaultAttachmentImage &&
+              <TrackerTaskAttachments defaultAttachmentImage={defaultAttachmentImage} isAddTask />
+            }
             <Stack direction="row" spacing={1.5} alignItems="center">
               <Tooltip title="Assign this task">
                 <MIconButton size="small">
                   <Icon icon={peopleFill} width={20} height={20} />
                 </MIconButton>
               </Tooltip>
-
+              <Tooltip title="Attachment">
+                <MIconButton size="small" onClick={handleAttach}>
+                  <Icon icon={attach2Fill} width={20} height={20} />
+                </MIconButton>
+              </Tooltip>
+              <input ref={fileInputRef} type="file" style={{ display: 'none' }} onChange={onHandleChange} />
               {startTime && endTime ? (
                 <DisplayTime
                   startTime={startTime}

@@ -8,7 +8,7 @@ import { Box } from '@mui/material';
 const RootStyle = styled('div')(({ theme }) => ({
     flexGrow: 1,
     height: '100%',
-    overflow: 'hidden'
+    overflow: 'auto'
 }));
 
 const SimpleBarStyle = styled(SimpleBarReact)(({ theme }) => ({

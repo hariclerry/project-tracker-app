@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import { useSnackbar } from "notistack";
 import { useSelector } from "react-redux";
@@ -24,8 +24,19 @@ export default function TrackerColumn({ column, index }) {
   const { enqueueSnackbar } = useSnackbar();
   const { board } = useSelector((state) => state.tracker);
   const [open, setOpen] = useState(false);
+  const [defaultAttachmentImage, setdefaultAttachmentImage] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const { name, cardIds, id } = column;
+
+  // Clean up the selection to avoid memory leak
+  useEffect(() => {
+    if (selectedFile) {
+      const objectURL = URL.createObjectURL(selectedFile);
+      setdefaultAttachmentImage(objectURL);
+      return () => URL.revokeObjectURL(objectURL);
+    }
+  }, [selectedFile]);
 
   const handleOpenAddTask = () => {
     setOpen((prev) => !prev);
@@ -65,6 +76,15 @@ export default function TrackerColumn({ column, index }) {
     enqueueSnackbar("Add success", { variant: "success" });
     handleCloseAddTask();
   };
+
+  // On each change let user have access to a selected file
+  const handleChange = (event) => {
+    console.log("event.target.files----", event.target.files)
+    const file = event.target.files[0];
+    setSelectedFile(file);
+  };
+
+  console.log('defaultAttachmentImage-------', defaultAttachmentImage)
 
   return (
     <Draggable draggableId={id} index={index}>
@@ -111,6 +131,8 @@ export default function TrackerColumn({ column, index }) {
                 <TrackerAddTask
                   onAddTask={handleAddTask}
                   onCloseAddTask={handleCloseAddTask}
+                  onHandleChange={handleChange}
+                  defaultAttachmentImage={defaultAttachmentImage}
                 />
               )}
 

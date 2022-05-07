@@ -14,14 +14,12 @@
 }
 
 .App-header {
-  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  /* color: white; */
 }
 
 .App-link {
@@ -35,4 +33,35 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+[data-rbd-droppable-context-id="1"] {
+  overflow: auto !important;
+}
+
+#tracker-column {
+  display: flex;
+  overflow: auto;
+}
+#tracker-column > div:first-child {
+  display: flex;
+  overflow: auto;
+  justify-content: flex-start;
+}
+
+#tracker-column > div:first-child > div {
+  margin: 10px;
+}
+
+@media (max-width: 1200px) {
+  #tracker-column > div:first-child {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.comment-item {
+  background-color: #e6e6e6;
+  padding: 10px;
+  border-radius: 5px;
 }

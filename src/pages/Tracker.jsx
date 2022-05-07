@@ -34,7 +34,7 @@ export default function Tracker() {
     useEffect(() => {
         dispatch(getBoard());
     }, [dispatch]);
-    console.log("board-------", board)
+
     const onDragEnd = (result) => {
         // Reorder card
         const { destination, source, draggableId, type } = result;
@@ -99,20 +99,8 @@ export default function Tracker() {
     };
 
     return (
-        <Box title="Tracker" sx={{ height: '100%' }}>
-            <Container maxWidth={false} sx={{ height: '100%' }}>
-                {
-                    // <HeaderBreadcrumbs
-                    // heading="Tracker"
-                    // links={[
-                    //     {
-                    //         name: 'Dashboard',
-                    //         href: PATH_DASHBOARD.root
-                    //     },
-                    //     { name: 'Tracker' }
-                    // ]}
-                    // />
-                }
+        <Box title="Tracker" sx={{ height: '100%', width: '100%' }}>
+            <Container maxWidth={false} sx={{ height: '100%' }} id='tracker-column'>
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId="all-columns" direction="horizontal" type="column">
                         {(provided) => (

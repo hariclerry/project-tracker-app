@@ -5,15 +5,10 @@ import roundAddPhotoAlternate from "@iconify/icons-ic/round-add-photo-alternate"
 import { Stack, Paper, Button, Tooltip, OutlinedInput } from "@mui/material";
 //
 import { MIconButton } from "components/@material-extend";
-// import MyAvatar from "../../MyAvatar";
 
-export default function TrackerTaskCommentInput() {
+export default function TrackerTaskCommentInput({ onHandleComments, setComments }) {
   return (
     <Stack direction="row" spacing={2} sx={{ py: 3, px: 2.5 }}>
-      {
-        // <MyAvatar />
-      }
-
       <Paper variant="outlined" sx={{ p: 1, flexGrow: 1 }}>
         <OutlinedInput
           fullWidth
@@ -21,27 +16,19 @@ export default function TrackerTaskCommentInput() {
           rows={2}
           placeholder="Type a message"
           sx={{ "& fieldset": { display: "none" } }}
+          onChange={(e) => setComments(e.target.value)}
         />
 
         <Stack
           direction="row"
-          justifyContent="space-between"
+          justifyContent="end"
           alignItems="center"
         >
-          <Stack direction="row" spacing={0.5}>
-            <Tooltip title="Add photo">
-              <MIconButton size="small">
-                <Icon icon={roundAddPhotoAlternate} width={20} height={20} />
-              </MIconButton>
-            </Tooltip>
-            <Tooltip title="Attachment">
-              <MIconButton size="small">
-                <Icon icon={attach2Fill} width={20} height={20} />
-              </MIconButton>
-            </Tooltip>
-          </Stack>
 
-          <Button variant="contained">Comment</Button>
+          <Button variant="contained" onClick={() => {
+            onHandleComments();
+            setComments('');
+          }}>Comment</Button>
         </Stack>
       </Paper>
     </Stack>

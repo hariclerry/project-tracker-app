@@ -42,10 +42,8 @@ export default function TrackerTaskCard({
               px: 2,
               width: 1,
               position: "relative",
-              // boxShadow: (theme) => theme.customShadows.z1,
               boxShadow: 'red',
               "&:hover": {
-                // boxShadow: (theme) => theme.customShadows.z16,
                 boxShadow: 'red',
               },
               ...(attachments.length > 0 && {
@@ -77,7 +75,6 @@ export default function TrackerTaskCard({
                   />
                 </Box>
               )}
-
               <Typography
                 noWrap
                 variant="subtitle2"

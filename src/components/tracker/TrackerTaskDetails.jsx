@@ -31,7 +31,7 @@ import {
 import Scrollbar from '../commons/Scrollbar';
 import { MIconButton, MHidden } from 'components/@material-extend';
 import TrackerTaskCommentList from './TrackerTaskCommentList';
-// import TrackerTaskAttachments from './TrackerTaskAttachments';
+import TrackerTaskAttachments from './TrackerTaskAttachments';
 import TrackerTaskCommentInput from './TrackerTaskCommentInput';
 import { useDatePicker, DisplayTime } from './TrackerTaskAdd';
 
@@ -56,6 +56,9 @@ export default function TrackerTaskDetails({
   const fileInputRef = useRef(null);
   const [taskCompleted, setTaskCompleted] = useState(card.completed);
   const [prioritize, setPrioritize] = useState('low');
+  const [commentList, setAddComment] = useState([]);
+  const [comment, setComments] = useState('');
+
 
   const { name, description, due, assignee, attachments, comments } = card;
 
@@ -84,6 +87,11 @@ export default function TrackerTaskDetails({
   const handleChangePrioritize = (event) => {
     setPrioritize(event.target.value);
   };
+
+  const handleComments = () => {
+    setAddComment([...commentList, comment]);
+  }
+
   const theme = createTheme();
   return (
     <>
@@ -267,20 +275,28 @@ export default function TrackerTaskDetails({
             <Stack direction="row">
               <LabelStyle sx={{ mt: 2 }}>Attachments</LabelStyle>
               <Stack direction="row" flexWrap="wrap">
-                Attachment placeholder
                 {
-                  // <TrackerTaskAttachments attachments={attachments} />
+                  attachments.length === 0 ?
+                    <Typography variant="body2" sx={{ marginTop: '16px' }}>
+                      Attachment placeholder
+                    </Typography>
+
+                    :
+                    <TrackerTaskAttachments
+                      attachments={attachments}
+                    />
+
                 }
               </Stack>
             </Stack>
           </Stack>
 
-          {comments.length > 0 && <TrackerTaskCommentList comments={comments} />}
+          {commentList.length > 0 && <TrackerTaskCommentList comments={commentList} />}
         </Scrollbar>
 
         <Divider />
 
-        <TrackerTaskCommentInput />
+        <TrackerTaskCommentInput onHandleComments={handleComments} setComments={setComments} />
       </Drawer>
     </>
   );
