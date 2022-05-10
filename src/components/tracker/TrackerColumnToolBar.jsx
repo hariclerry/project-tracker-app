@@ -89,7 +89,12 @@ export default function TrackerColumnToolBar({
         open={open}
         onClose={handleClose}
         anchorEl={anchorRef.current}
-        sx={{ py: 1, width: "auto" }}
+        sx={{
+          py: 1, width: "auto",
+          backgroundColor: 'rgb(33, 43, 54)',
+          color: 'rgb(255, 255, 255)',
+          boxShadow: 'rgb(0 0 0 / 24%) 0px 0px 2px 0px, rgb(0 0 0 / 24%) -20px 20px 40px -4px',
+        }}
       >
         <MenuItem onClick={handleClickRename} sx={{ py: 0.75, px: 1.5 }}>
           <Box

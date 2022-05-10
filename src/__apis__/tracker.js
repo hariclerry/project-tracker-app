@@ -54,9 +54,9 @@ const COMMENTS = [...Array(8)].map((_, index) => ({
 const cardList = [
     {
         id: cardIds.card1,
-        name: 'Call with sales of HubSpot',
+        name: 'Meeting with team leads',
         description:
-            'Duis condimentum lacus finibus felis pellentesque, ac auctor nibh fermentum. Duis sed dui ante. Phasellus id eros tincidunt, dictum lorem vitae, pellentesque sem. Aenean eu enim sit amet mauris rhoncus mollis. Sed enim turpis, porta a felis et, luctus faucibus nisi. Phasellus et metus fermentum, ultrices arcu aliquam, facilisis justo. Cras nunc nunc, elementum sed euismod ut, maximus eget nibh. Phasellus condimentum lorem neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce sagittis pharetra eleifend. Suspendisse potenti.',
+            'Voluptatem quaerat non architecto ab laudantium modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam totam ratione voluptas quod exercitationem fuga.Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!',
         assignee: [
             { id: memberIds.member1, avatar: mockData.image.avatar(1), name: mockData.name.fullName(1) }
         ],
@@ -67,8 +67,8 @@ const cardList = [
     },
     {
         id: cardIds.card2,
-        name: 'Interview for the Asis. Sales Manager',
-        description: 'We are looking for vue experience and of course node js strong knowledge',
+        name: 'Call with CTO and Design team',
+        description: 'Quaerat provident commodi consectetur veniam similique ad earum omnis ipsum saepe',
         assignee: [
             { id: memberIds.member1, avatar: mockData.image.avatar(1), name: mockData.name.fullName(2) },
             { id: memberIds.member2, avatar: mockData.image.avatar(2), name: mockData.name.fullName(3) },
@@ -83,9 +83,9 @@ const cardList = [
     },
     {
         id: cardIds.card3,
-        name: 'Change the height of the top bar because it looks too chunky',
+        name: 'Implement new notes feature',
         description:
-            'We nede to make it aggressive with pricing because it’s in their interest to acquire us',
+            'Quaerat provident commodi consectetur veniam similique ad earum omnis ipsum saepe',
         assignee: [],
         due: [null, null],
         attachments: [],
@@ -94,9 +94,9 @@ const cardList = [
     },
     {
         id: cardIds.card4,
-        name: 'Integrate Stripe API',
+        name: 'Fix display message after user has loggedin',
         description:
-            'We nede to make it aggresive with pricing because it’s in their interest to acquire us',
+            'Quaerat provident commodi consectetur veniam similique ad earum omnis ipsum saepe',
         assignee: [
             { id: memberIds.member2, avatar: mockData.image.avatar(2), name: mockData.name.fullName(7) },
             { id: memberIds.member5, avatar: mockData.image.avatar(5), name: mockData.name.fullName(8) }
@@ -108,9 +108,9 @@ const cardList = [
     },
     {
         id: cardIds.card5,
-        name: 'Update the customer API for payments',
+        name: 'Update different views to match new designs',
         description:
-            'We need to make it aggresive with pricing because it’s in their interest to acquire us',
+            'Quaerat provident commodi consectetur veniam similique ad earum omnis ipsum saepe',
         assignee: [
             { id: memberIds.member1, avatar: mockData.image.avatar(1), name: mockData.name.fullName(9) }
         ],
@@ -121,8 +121,8 @@ const cardList = [
     },
     {
         id: cardIds.card6,
-        name: 'Release minimals DS',
-        description: 'Production',
+        name: 'Release Chat feature',
+        description: 'Quaerat provident commodi consectetur veniam similique ad earum omnis ipsum saepe',
         assignee: [
             { id: memberIds.member1, avatar: mockData.image.avatar(1), name: mockData.name.fullName(10) }
         ],

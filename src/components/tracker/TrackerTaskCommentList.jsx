@@ -3,10 +3,7 @@ import { useState } from 'react';
 // material
 import { Stack, Box, Avatar, Typography } from '@mui/material';
 // utils
-import { fToNow } from 'helper/formatTime';
-import { format, getTime, formatDistanceToNow } from 'date-fns';
-//
-// import LightboxModal from '../../LightboxModal';
+import { format } from 'date-fns';
 
 export default function TrackerTaskCommentList({ comments }) {
   const [openLightbox, setOpenLightbox] = useState(false);
@@ -27,19 +24,7 @@ export default function TrackerTaskCommentList({ comments }) {
       <Stack spacing={3} sx={{ py: 3, px: 2.5, bgcolor: 'background.neutral' }}>
         {comments.map((comment, index) => (
           <Stack key={index} direction="row" spacing={2}>
-            {
-              // <Avatar src={comment.avatar} sx={{ width: 32, height: 32 }} />
-            }
             <div className='comment-item'>
-              <Stack direction="row" alignItems="center" spacing={1}>
-                {
-                  // <Typography variant="subtitle2"> {comment.name}</Typography>
-                  // <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                  //   {new Date()}
-                  // </Typography>
-                }
-              </Stack>
-
               {comment.messageType === 'image' ? (
                 <Box
                   component="img"
@@ -52,7 +37,7 @@ export default function TrackerTaskCommentList({ comments }) {
                   {comment}
                 </Typography>
               )}
-              <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+              <Typography variant="caption" sx={{ color: 'rgb(165 159 159 / 60%)' }}>
                 {format(new Date(), 'dd MMM yyyy p')}
               </Typography>
             </div>

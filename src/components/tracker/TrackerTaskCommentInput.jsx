@@ -1,22 +1,18 @@
-import { Icon } from "@iconify/react";
-import attach2Fill from "@iconify/icons-eva/attach-2-fill";
-import roundAddPhotoAlternate from "@iconify/icons-ic/round-add-photo-alternate";
 // material
-import { Stack, Paper, Button, Tooltip, OutlinedInput } from "@mui/material";
-//
-import { MIconButton } from "components/@material-extend";
+import { Stack, Paper, Button, OutlinedInput } from "@mui/material";
 
 export default function TrackerTaskCommentInput({ onHandleComments, setComments }) {
   return (
     <Stack direction="row" spacing={2} sx={{ py: 3, px: 2.5 }}>
-      <Paper variant="outlined" sx={{ p: 1, flexGrow: 1 }}>
+      <Paper variant="outlined" sx={{ p: 1, flexGrow: 1, backgroundColor: 'rgb(33, 43, 54)', border: '1px solid rgba(145, 158, 171, 0.12)' }}>
         <OutlinedInput
           fullWidth
           multiline
           rows={2}
           placeholder="Type a message"
-          sx={{ "& fieldset": { display: "none" } }}
+          sx={{ "& fieldset": { display: "none" }, }}
           onChange={(e) => setComments(e.target.value)}
+          className="comment-placeholder"
         />
 
         <Stack
@@ -25,10 +21,11 @@ export default function TrackerTaskCommentInput({ onHandleComments, setComments 
           alignItems="center"
         >
 
-          <Button variant="contained" onClick={() => {
-            onHandleComments();
-            setComments('');
-          }}>Comment</Button>
+          <Button variant="contained" sx={{ backgroundColor: 'rgb(6 135 6)' }}
+            onClick={() => {
+              onHandleComments();
+              setComments('');
+            }}>Comment</Button>
         </Stack>
       </Paper>
     </Stack>

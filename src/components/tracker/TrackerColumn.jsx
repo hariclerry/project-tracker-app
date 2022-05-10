@@ -84,8 +84,6 @@ export default function TrackerColumn({ column, index }) {
     setSelectedFile(file);
   };
 
-  console.log('defaultAttachmentImage-------', defaultAttachmentImage)
-
   return (
     <Draggable draggableId={id} index={index}>
       {(provided) => (

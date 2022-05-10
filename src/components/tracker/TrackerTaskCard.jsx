@@ -55,6 +55,7 @@ export default function TrackerTaskCard({
               {attachments.length > 0 && (
                 <Box
                   sx={{
+                    margin: '0 10px',
                     pt: "60%",
                     borderRadius: 1,
                     overflow: "hidden",

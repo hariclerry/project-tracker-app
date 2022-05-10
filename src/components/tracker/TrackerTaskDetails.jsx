@@ -122,34 +122,22 @@ export default function TrackerTaskDetails({
           </Button>
 
           <Stack direction="row" spacing={1} justifyContent="flex-end" flexGrow={1}>
-            <Tooltip title="Like this">
-              <MIconButton size="small">
-                <Icon icon={roundThumbUp} width={20} height={20} />
-              </MIconButton>
-            </Tooltip>
 
-            <Tooltip title="Attachment">
-              <MIconButton size="small" onClick={handleAttach}>
-                <Icon icon={attach2Fill} width={20} height={20} />
-              </MIconButton>
-            </Tooltip>
-            <input ref={fileInputRef} type="file" style={{ display: 'none' }} />
-
-            <Tooltip title="Delete task">
-              <MIconButton onClick={onDeleteTask} size="small">
+            <Tooltip title="Delete task" >
+              <MIconButton onClick={onDeleteTask} size="small" sx={{ color: 'red !important' }}>
                 <Icon icon={trash2Outline} width={20} height={20} />
               </MIconButton>
             </Tooltip>
 
             <Tooltip title="More actions">
-              <MIconButton size="small">
+              <MIconButton size="small" sx={{ color: 'white' }}>
                 <Icon icon={moreHorizontalFill} width={20} height={20} />
               </MIconButton>
             </Tooltip>
           </Stack>
         </Stack>
 
-        <Divider />
+        <Divider sx={{ borderColor: 'rgb(246 246 246 / 12%)' }} />
 
         <Scrollbar>
           <Stack spacing={3} sx={{ px: 2.5, py: 3 }}>
@@ -161,32 +149,33 @@ export default function TrackerTaskDetails({
               value={name}
               sx={{
                 typography: 'h6',
-                '& .MuiOutlinedInput-notchedOutline': { borderColor: 'transparent' }
+                '& .MuiOutlinedInput-notchedOutline': { borderColor: 'transparent' },
+                color: 'white'
               }}
             />
             <Stack direction="row">
-              <LabelStyle sx={{ mt: 1.5 }}>Assignee</LabelStyle>
+              <LabelStyle sx={{ mt: 1.5, color: 'rgb(145, 158, 171)' }}>Assignee</LabelStyle>
               <Stack direction="row" flexWrap="wrap" alignItems="center">
-                {assignee.map((user) => (
-                  <Avatar
-                    key={user.id}
-                    alt={user.name}
-                    src={user.avatar}
-                    sx={{ m: 0.5, width: 36, height: 36 }}
-                  />
-                ))}
-                <Tooltip title="Add assignee">
-                  <MIconButton
-                    sx={{ p: 1, ml: 0.5, border: (theme) => `dashed 1px ${theme.palette.divider}` }}
-                  >
-                    <Icon icon={plusFill} width={20} height={20} />
-                  </MIconButton>
-                </Tooltip>
+                {assignee.length > 0 ?
+                  assignee.map((user) => (
+                    <Avatar
+                      key={user.id}
+                      alt={user.name}
+                      src={user.avatar}
+                      sx={{ m: 0.5, width: 36, height: 36 }}
+                    />
+                  )) : (
+                    <Typography variant="body2" sx={{ textTransform: 'capitalize' }}>
+                      <Avatar />
+                    </Typography>
+                  )
+
+                }
               </Stack>
             </Stack>
 
             <Stack direction="row" alignItems="center">
-              <LabelStyle> Due date</LabelStyle>
+              <LabelStyle sx={{ color: 'rgb(145, 158, 171)' }}> Due date</LabelStyle>
               <>
                 {startTime && endTime ? (
                   <DisplayTime
@@ -195,7 +184,7 @@ export default function TrackerTaskDetails({
                     isSameDays={isSameDays}
                     isSameMonths={isSameMonths}
                     onOpenPicker={onOpenPicker}
-                    sx={{ typography: 'body2' }}
+                    sx={{ typography: 'body2', color: 'rgb(145, 158, 171)' }}
                   />
                 ) : (
                   <Tooltip title="Add assignee">
@@ -204,10 +193,11 @@ export default function TrackerTaskDetails({
                       sx={{
                         p: 1,
                         ml: 0.5,
-                        border: (theme) => `dashed 1px ${theme.palette.divider}`
+                        border: (theme) => `dashed 1px ${theme.palette.divider}`,
+                        color: 'rgb(145, 158, 171)'
                       }}
                     >
-                      <Icon icon={plusFill} width={20} height={20} />
+                      <Icon icon={plusFill} width={20} height={20} sx={{ color: 'rgb(145, 158, 171)', border: '1px dashed rgba(145, 158, 171, 0.24)' }} />
                     </MIconButton>
                   </Tooltip>
                 )}
@@ -225,7 +215,7 @@ export default function TrackerTaskDetails({
             </Stack>
 
             <Stack direction="row" alignItems="center">
-              <LabelStyle>Prioritize</LabelStyle>
+              <LabelStyle sx={{ color: 'rgb(145, 158, 171)' }}>Prioritize</LabelStyle>
               <TextField
                 fullWidth
                 select
@@ -235,7 +225,9 @@ export default function TrackerTaskDetails({
                 sx={{
                   '& svg': { display: 'none' },
                   '& fieldset': { display: 'none' },
-                  '& .MuiSelect-select': { p: 0, display: 'flex', alignItems: 'center' }
+                  '& .MuiSelect-select': {
+                    p: 0, display: 'flex', alignItems: 'center',
+                  }
                 }}
               >
                 {PRIORITIZES.map((option) => (
@@ -251,7 +243,7 @@ export default function TrackerTaskDetails({
                         ...(option === 'medium' && { bgcolor: 'warning.main' })
                       }}
                     />
-                    <Typography variant="body2" sx={{ textTransform: 'capitalize' }}>
+                    <Typography variant="body2" sx={{ textTransform: 'capitalize', color: 'rgb(145, 158, 171)' }}>
                       {option}
                     </Typography>
                   </MenuItem>
@@ -260,24 +252,24 @@ export default function TrackerTaskDetails({
             </Stack>
 
             <Stack direction="row">
-              <LabelStyle sx={{ mt: 2 }}>Description</LabelStyle>
+              <LabelStyle sx={{ mt: 2, color: 'rgb(145, 158, 171)' }}>Description</LabelStyle>
               <OutlinedInput
                 fullWidth
                 multiline
                 rows={3}
                 size="small"
-                placeholder="Task name"
+                placeholder="Task Description"
                 value={description}
-                sx={{ typography: 'body2' }}
+                sx={{ typography: 'body2', color: 'white' }}
               />
             </Stack>
 
             <Stack direction="row">
-              <LabelStyle sx={{ mt: 2 }}>Attachments</LabelStyle>
+              <LabelStyle sx={{ mt: 2, color: 'rgb(145, 158, 171)' }}>Attachments</LabelStyle>
               <Stack direction="row" flexWrap="wrap">
                 {
                   attachments.length === 0 ?
-                    <Typography variant="body2" sx={{ marginTop: '16px' }}>
+                    <Typography variant="body2" sx={{ marginTop: '16px', color: 'rgb(145, 158, 171)' }}>
                       Attachment placeholder
                     </Typography>
 

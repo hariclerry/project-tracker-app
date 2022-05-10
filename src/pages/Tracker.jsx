@@ -8,11 +8,6 @@ import { getBoard, persistColumn, persistCard } from 'redux/slices/tracker';
 
 // material
 import { Box } from '@mui/material';
-// routes
-// import { PATH_DASHBOARD } from '../../routes/paths';
-// components
-// import Page from '../../components/Page';
-// import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
 import { TrackerColumn, TrackerColumnAdd } from 'components/tracker';
 
 // ----------------------------------------------------------------------

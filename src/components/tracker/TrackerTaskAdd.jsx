@@ -148,17 +148,24 @@ export default function TrackerTaskAdd({ onAddTask, onCloseAddTask, onHandleChan
   return (
     <>
       <ClickAwayListener onClickAway={handleClickAddTask}>
-        <Paper variant="outlined" sx={{ p: 2 }}>
+        <Paper variant="outlined" sx={{
+          p: 2,
+          backgroundColor: 'rgb(33, 43, 54)',
+          color: 'rgb(255, 255, 255)',
+          boxShadow: 'rgb(0 0 0 / 16%) 0px 1px 2px 0px'
+        }}>
           <OutlinedInput
             multiline
             size="small"
-            placeholder="Task name"
+            placeholder="Enter Task name"
             value={name}
             onChange={(event) => setName(event.target.value)}
             onKeyUp={handleKeyUpAddTask}
             sx={{
               '& input': { p: 0 },
-              '& fieldset': { borderColor: 'transparent !important' }
+              '& fieldset': { borderColor: 'transparent !important' },
+              backgroundColor: 'none !important',
+              boxShadow: 'none'
             }}
           />
 
@@ -170,6 +177,7 @@ export default function TrackerTaskAdd({ onAddTask, onCloseAddTask, onHandleChan
                 onChange={handleChangeCompleted}
                 icon={<Icon icon={radioButtonOffOutline} />}
                 checkedIcon={<Icon icon={checkmarkCircle2Outline} />}
+                sx={{ color: 'white' }}
               />
             </Tooltip>
             {defaultAttachmentImage &&
@@ -177,12 +185,12 @@ export default function TrackerTaskAdd({ onAddTask, onCloseAddTask, onHandleChan
             }
             <Stack direction="row" spacing={1.5} alignItems="center">
               <Tooltip title="Assign this task">
-                <MIconButton size="small">
+                <MIconButton size="small" sx={{ color: 'white' }}>
                   <Icon icon={peopleFill} width={20} height={20} />
                 </MIconButton>
               </Tooltip>
               <Tooltip title="Attachment">
-                <MIconButton size="small" onClick={handleAttach}>
+                <MIconButton size="small" onClick={handleAttach} sx={{ color: 'white' }}>
                   <Icon icon={attach2Fill} width={20} height={20} />
                 </MIconButton>
               </Tooltip>
@@ -197,7 +205,7 @@ export default function TrackerTaskAdd({ onAddTask, onCloseAddTask, onHandleChan
                 />
               ) : (
                 <Tooltip title="Add due date">
-                  <MIconButton size="small" onClick={onOpenPicker}>
+                  <MIconButton size="small" onClick={onOpenPicker} sx={{ color: 'white' }}>
                     <Icon icon={calendarFill} width={20} height={20} />
                   </MIconButton>
                 </Tooltip>
@@ -211,6 +219,7 @@ export default function TrackerTaskAdd({ onAddTask, onCloseAddTask, onHandleChan
                 onChange={onChangeDueDate}
                 // @ts-ignore
                 renderInput={() => { }}
+                sx={{ color: 'white' }}
               />
             </Stack>
           </Stack>
