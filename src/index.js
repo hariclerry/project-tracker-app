@@ -12,7 +12,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { store, persistor } from './redux/store';
-import { SettingsProvider } from './contexts/SettingsContext';
 import LoadingScreen from './components/commons/LoadingScreen';
 
 ReactDOM.render(
@@ -20,11 +19,9 @@ ReactDOM.render(
     <ReduxProvider store={store}>
       <PersistGate loading={<LoadingScreen />} persistor={persistor}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <SettingsProvider>
-            <SnackbarProvider maxSnack={1} preventDuplicate>
-              <App />
-            </SnackbarProvider>
-          </SettingsProvider>
+          <SnackbarProvider maxSnack={1} preventDuplicate>
+            <App />
+          </SnackbarProvider>
         </LocalizationProvider>
       </PersistGate>
     </ReduxProvider>
