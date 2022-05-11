@@ -1,8 +1,6 @@
 import { Icon } from '@iconify/react';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import plusFill from '@iconify/icons-eva/plus-fill';
-import attach2Fill from '@iconify/icons-eva/attach-2-fill';
-import roundThumbUp from '@iconify/icons-ic/round-thumb-up';
 import checkmarkFill from '@iconify/icons-eva/checkmark-fill';
 import trash2Outline from '@iconify/icons-eva/trash-2-outline';
 import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill';
@@ -53,14 +51,14 @@ export default function TrackerTaskDetails({
   onClose,
   onDeleteTask
 }) {
-  const fileInputRef = useRef(null);
+
   const [taskCompleted, setTaskCompleted] = useState(card.completed);
   const [prioritize, setPrioritize] = useState('low');
   const [commentList, setAddComment] = useState([]);
   const [comment, setComments] = useState('');
 
 
-  const { name, description, due, assignee, attachments, comments } = card;
+  const { name, description, due, assignee, attachments } = card;
 
   const {
     dueDate,
@@ -76,10 +74,6 @@ export default function TrackerTaskDetails({
     date: due
   });
 
-  const handleAttach = () => {
-    fileInputRef.current?.click();
-  };
-
   const handleToggleCompleted = () => {
     setTaskCompleted((prev) => !prev);
   };
@@ -90,6 +84,7 @@ export default function TrackerTaskDetails({
 
   const handleComments = () => {
     setAddComment([...commentList, comment]);
+    setComments('');
   }
 
   const theme = createTheme();
@@ -286,7 +281,7 @@ export default function TrackerTaskDetails({
           {commentList.length > 0 && <TrackerTaskCommentList comments={commentList} />}
         </Scrollbar>
 
-        <Divider />
+        <Divider sx={{ borderColor: 'rgb(246 246 246 / 12%)' }} />
 
         <TrackerTaskCommentInput onHandleComments={handleComments} setComments={setComments} />
       </Drawer>

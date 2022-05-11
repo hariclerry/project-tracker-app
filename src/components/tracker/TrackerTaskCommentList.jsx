@@ -1,7 +1,7 @@
 import { findIndex } from 'lodash';
 import { useState } from 'react';
 // material
-import { Stack, Box, Avatar, Typography } from '@mui/material';
+import { Stack, Box, Typography } from '@mui/material';
 // utils
 import { format } from 'date-fns';
 
@@ -47,14 +47,6 @@ export default function TrackerTaskCommentList({ comments }) {
 
       {!!selectedImage && (
         <div>    No image</div>
-
-        // <LightboxModal
-        //   images={imagesLightbox}
-        //   photoIndex={selectedImage}
-        //   setPhotoIndex={setSelectedImage}
-        //   isOpen={openLightbox}
-        //   onClose={() => setOpenLightbox(false)}
-        // />
       )}
     </>
   );

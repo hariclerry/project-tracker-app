@@ -58,9 +58,7 @@
 }
 
 #tracker-column > div:first-child > div > div > div > div:first-child {
-  /* background-color: rgb(33, 43, 54); */
   color: rgb(255, 255, 255);
-  /* box-shadow: rgb(0 0 0 / 16%) 0px 1px 2px 0px; */
 }
 
 #tracker-column > div:first-child > div > div > div > div > div:first-child {
@@ -68,12 +66,6 @@
   color: rgb(255, 255, 255);
   box-shadow: rgb(0 0 0 / 16%) 0px 1px 2px 0px;
 }
-
-/* #tracker-column > div:first-child > div:nth-child(3) {
-  background-color: rgb(33, 43, 54);
-  color: rgb(255, 255, 255);
-  box-shadow: rgb(0 0 0 / 16%) 0px 1px 2px 0px;
-} */
 
 #tracker-column
   > div:first-child
@@ -84,9 +76,7 @@
   > div:first-child
   > span
   > svg {
-  /* background-color: rgb(33, 43, 54); */
   color: rgb(187 178 178);
-  /* box-shadow: rgb(0 0 0 / 16%) 0px 1px 2px 0px; */
 }
 
 #tracker-column
@@ -98,15 +88,11 @@
   > div:first-child
   > .Mui-checked
   > svg {
-  /* background-color: rgb(33, 43, 54); */
   color: rgb(6 135 6);
-  /* box-shadow: rgb(0 0 0 / 16%) 0px 1px 2px 0px; */
 }
 
 #tracker-column > div:first-child > div > div > div > button {
-  /* background-color: rgb(33, 43, 54); */
   color: rgb(255, 255, 255);
-  /* box-shadow: rgb(0 0 0 / 16%) 0px 1px 2px 0px; */
 }
 
 @media (max-width: 1200px) {
@@ -123,7 +109,7 @@
 }
 
 .MuiPaper-elevation {
-  padding-left: 0px;
+  padding-left: 0px !important;
 }
 
 .MuiPaper-elevation > span {
@@ -192,4 +178,31 @@
   .PrivatePickersSlideTransition-root
   .MuiDateRangePickerDay-day {
   color: white;
+}
+
+.column-new-section {
+  color: white !important;
+}
+
+@media (max-width: 1200px) {
+  .fullscreen-button {
+    width: 13% !important;
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .fullscreen-button {
+    width: 16% !important;
+    font-size: 10px !important;
+    align-self: center !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .fullscreen-button {
+    width: 25% !important;
+    font-size: 10px !important;
+    align-self: center !important;
+  }
 }

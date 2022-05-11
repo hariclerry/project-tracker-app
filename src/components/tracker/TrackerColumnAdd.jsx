@@ -81,6 +81,7 @@ export default function TrackerColumnAdd() {
             onChange={handleChangeName}
             onKeyUp={handleKeyUp}
             sx={{ typography: "h6" }}
+            className='column-new-section'
           />
         </ClickAwayListener>
       )}

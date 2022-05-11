@@ -23,6 +23,7 @@ export default function SettingFullscreen() {
 
     return (
         <Button
+            className='fullscreen-button'
             fullWidth
             size="large"
             variant="outlined"
@@ -31,6 +32,9 @@ export default function SettingFullscreen() {
             onClick={toggleFullScreen}
             sx={{
                 fontSize: 14,
+                width: '11%',
+                alignSelf: 'flex-end',
+                margin: '0 30px',
                 ...(fullscreen && {
                     bgcolor: (theme) =>
                         alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity)
